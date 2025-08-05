@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfa7einif8asu"]
+
+[ext_resource type="Texture2D" uid="uid://bv8wwykuvhsxd" path="res://sprites/UI/gbutton.png" id="1_uwrxv"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(564, 322)
+scale = Vector2(0.859765, 0.85108)
+texture = ExtResource("1_uwrxv")
