@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfa7einif8asu"]
+[gd_scene load_steps=3 format=3 uid="uid://bfa7einif8asu"]
 
 [ext_resource type="Texture2D" uid="uid://bv8wwykuvhsxd" path="res://sprites/UI/gbutton.png" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://cdokrxyy0n7fa" path="res://script/game.gd" id="1_yqjtg"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_yqjtg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(564, 322)
-scale = Vector2(0.859765, 0.85108)
-texture = ExtResource("1_uwrxv")
+[node name="obj_GButton" type="TextureButton" parent="."]
+offset_left = 880.0
+offset_top = 173.0
+offset_right = 1064.0
+offset_bottom = 480.0
+texture_normal = ExtResource("1_uwrxv")
+
+[connection signal="pressed" from="obj_GButton" to="." method="_onclick"]
