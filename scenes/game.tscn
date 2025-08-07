@@ -1,45 +1,111 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfa7einif8asu"]
+[gd_scene load_steps=12 format=3 uid="uid://bfa7einif8asu"]
 
 [ext_resource type="Texture2D" uid="uid://bv8wwykuvhsxd" path="res://sprites/UI/gbutton.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdokrxyy0n7fa" path="res://script/game.gd" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://bso8lqactbrot" path="res://sprites/UI/spr_fallingG.png" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://cosro1cbsw5nf" path="res://scenes/background_parallax.gd" id="4_gee14"]
+[ext_resource type="Script" uid="uid://cosro1cbsw5nf" path="res://script/background_parallax.gd" id="4_gee14"]
 [ext_resource type="Texture2D" uid="uid://chdi3vmokbnhg" path="res://sprites/backgrounds/spr_MountainsBackground.png" id="5_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bankxxnyhggse" path="res://sprites/backgrounds/spr_MountainsBackground2.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bfgova2wvv8nj" path="res://sprites/backgrounds/spr_MountainsForeground2.png" id="7_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dbpobb7p04ajx" path="res://sprites/backgrounds/spr_MountainsForeground.png" id="8_dinhu"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lbhrr"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(600, 1, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-angle_min = -22.2
-angle_max = 22.2
-gravity = Vector3(0, 98, 0)
-radial_accel_min = -9.23
-radial_accel_max = 9.23
-scale_min = 0.5
-scale_max = 0.5
-scale_over_velocity_max = 0.5
+[sub_resource type="Animation" id="Animation_gee14"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../obj_GButton:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../obj_GButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(910, 187)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../obj_GButton:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vtaks"]
+resource_name = "anim_GBClick"
+length = 0.21
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../obj_GButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0tnpc"]
+resource_name = "anim_GBIdle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../obj_GButton:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.193732, 0.193732, -0.193732]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvpfn"]
+_data = {
+&"RESET": SubResource("Animation_gee14"),
+&"anim_GBClick": SubResource("Animation_vtaks"),
+&"anim_GBIdle": SubResource("Animation_0tnpc")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
 [node name="obj_GButton" type="TextureButton" parent="."]
-offset_left = 880.0
-offset_top = 173.0
-offset_right = 1064.0
-offset_bottom = 480.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 910.0
+offset_top = 187.0
+offset_right = 1094.0
+offset_bottom = 494.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(91.5, 155)
 texture_normal = ExtResource("1_uwrxv")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(597, -53)
-amount = 40
-texture = ExtResource("3_lnu2h")
-lifetime = 6.57
-trail_lifetime = 10.0
-process_material = SubResource("ParticleProcessMaterial_lbhrr")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="background" type="Node2D" parent="."]
 position = Vector2(572, 308)
@@ -72,5 +138,17 @@ texture_filter = 1
 position = Vector2(701, 697.5)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("8_dinhu")
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="anim_GButtonIdle" type="AnimationPlayer" parent="Animations"]
+libraries = {
+&"": SubResource("AnimationLibrary_kvpfn")
+}
+
+[node name="anim_GButtonClick" type="AnimationPlayer" parent="Animations"]
+libraries = {
+&"": SubResource("AnimationLibrary_kvpfn")
+}
 
 [connection signal="pressed" from="obj_GButton" to="." method="_onclick"]
