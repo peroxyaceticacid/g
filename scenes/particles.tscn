@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvl7rt5px5pb0"]
+
+[ext_resource type="Texture2D" uid="uid://bso8lqactbrot" path="res://sprites/UI/spr_fallingG.png" id="1_xmlf0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kqrua"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -22.2
+angle_max = 22.2
+direction = Vector3(0, -1, 0)
+spread = 5.964
+initial_velocity_min = 92.33
+initial_velocity_max = 107.71
+angular_velocity_min = -708.92
+angular_velocity_max = 553.85
+gravity = Vector3(0, 150, 0)
+linear_accel_min = 73.85
+linear_accel_max = 73.85
+radial_accel_min = -9.23
+radial_accel_max = 9.23
+scale_min = 0.4
+scale_max = 0.4
+scale_over_velocity_max = 0.5
+
+[node name="Particles" type="Node2D"]
+
+[node name="particle_GExplode" type="GPUParticles2D" parent="."]
+position = Vector2(998, 336)
+amount = 30
+texture = ExtResource("1_xmlf0")
+lifetime = 10.25
+speed_scale = 3.59
+explosiveness = 1.0
+trail_lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_kqrua")
