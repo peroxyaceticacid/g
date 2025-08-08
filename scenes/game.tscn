@@ -1,12 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfa7einif8asu"]
+[gd_scene load_steps=19 format=3 uid="uid://bfa7einif8asu"]
 
 [ext_resource type="Texture2D" uid="uid://bv8wwykuvhsxd" path="res://sprites/UI/gbutton.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cdokrxyy0n7fa" path="res://script/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bg6r7qn1rl0yd" path="res://scenes/particles.tscn" id="2_gee14"]
+[ext_resource type="Texture2D" uid="uid://bovr6y8wwkdm7" path="res://sprites/UI/signhover.png" id="4_dinhu"]
 [ext_resource type="Script" uid="uid://cosro1cbsw5nf" path="res://script/background_parallax.gd" id="4_gee14"]
 [ext_resource type="Texture2D" uid="uid://chdi3vmokbnhg" path="res://sprites/backgrounds/spr_MountainsBackground.png" id="5_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bankxxnyhggse" path="res://sprites/backgrounds/spr_MountainsBackground2.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bfgova2wvv8nj" path="res://sprites/backgrounds/spr_MountainsForeground2.png" id="7_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dbpobb7p04ajx" path="res://sprites/backgrounds/spr_MountainsForeground.png" id="8_dinhu"]
+[ext_resource type="FontFile" uid="uid://742kbebgyrj4" path="res://resources/gadugi.ttf" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://di7pejy45cdli" path="res://sprites/UI/sign.png" id="10_kvpfn"]
+[ext_resource type="Script" uid="uid://cxwlmy42l8tb1" path="res://script/obj_shop_buttonMove.gd" id="11_dinhu"]
+
+[sub_resource type="GDScript" id="GDScript_u5sy4"]
+script/source = "extends TextureButton
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="Animation" id="Animation_gee14"]
 resource_name = "RESET"
@@ -63,6 +82,22 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_kvpfn"]
+resource_name = "anim_GBClick2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../obj_GButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_0tnpc"]
 resource_name = "anim_GBIdle"
 length = 2.0
@@ -84,11 +119,24 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_gee14"),
 &"anim_GBClick": SubResource("Animation_vtaks"),
+&"anim_GBClick2": SubResource("Animation_kvpfn"),
 &"anim_GBIdle": SubResource("Animation_0tnpc")
 }
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
+clickParticle = ExtResource("2_gee14")
+
+[node name="obj_ShopButton" type="TextureButton" parent="."]
+offset_left = 241.0
+offset_top = 723.0
+offset_right = 481.0
+offset_bottom = 984.0
+texture_normal = ExtResource("10_kvpfn")
+texture_hover = ExtResource("4_dinhu")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("11_dinhu")
 
 [node name="obj_GButton" type="TextureButton" parent="."]
 anchors_preset = 8
@@ -106,36 +154,37 @@ pivot_offset = Vector2(91.5, 155)
 texture_normal = ExtResource("1_uwrxv")
 ignore_texture_size = true
 stretch_mode = 5
+script = SubResource("GDScript_u5sy4")
 
 [node name="background" type="Node2D" parent="."]
 position = Vector2(572, 308)
 script = ExtResource("4_gee14")
 
 [node name="background" type="Sprite2D" parent="background"]
-z_index = -4
+z_index = -1000
 texture_filter = 1
-position = Vector2(701, 697.5)
+position = Vector2(2329, 773)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("5_0tnpc")
 
 [node name="background2" type="Sprite2D" parent="background"]
-z_index = -3
+z_index = -999
 texture_filter = 1
-position = Vector2(701, 697.5)
+position = Vector2(5, 1461)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("6_vtaks")
 
 [node name="foreground2" type="Sprite2D" parent="background"]
-z_index = -2
+z_index = -998
 texture_filter = 1
-position = Vector2(701, 697.5)
+position = Vector2(961, 758)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("7_kvpfn")
 
 [node name="foreground" type="Sprite2D" parent="background"]
-z_index = -1
+z_index = -997
 texture_filter = 1
-position = Vector2(701, 697.5)
+position = Vector2(1435, 1562)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("8_dinhu")
 
@@ -150,5 +199,30 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_kvpfn")
 }
+
+[node name="obj_gCounter" type="RichTextLabel" parent="."]
+offset_left = 698.0
+offset_top = 87.0
+offset_right = 1311.0
+offset_bottom = 194.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 17
+theme_override_fonts/normal_font = ExtResource("9_0tnpc")
+theme_override_font_sizes/normal_font_size = 60
+text = "0 g's"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="obj_gpsCounter" type="RichTextLabel" parent="."]
+offset_left = 2.0
+offset_top = 571.0
+offset_right = 615.0
+offset_bottom = 678.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = ExtResource("9_0tnpc")
+theme_override_font_sizes/normal_font_size = 30
+text = "0 gps"
+vertical_alignment = 1
 
 [connection signal="pressed" from="obj_GButton" to="." method="_onclick"]

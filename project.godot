@@ -14,3 +14,7 @@ config/name="g"
 run/main_scene="uid://bfa7einif8asu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+
+[autoload]
+
+Global="*res://script/GLOBAL.gd"

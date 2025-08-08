@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://i5b4vneyc1kb"]
+
+[ext_resource type="Texture2D" uid="uid://bkbarpblm6v6u" path="res://sprites/backgrounds/spr_MenuBackground.jpg" id="1_qyuap"]
+[ext_resource type="Script" uid="uid://cookfmt3cfm7t" path="res://script/animationmenu.gd" id="2_ch40n"]
+
+[sub_resource type="Animation" id="Animation_qyuap"]
+resource_name = "loop"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BackgroundMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1399, -1716), Vector2(-399, -716)]
+}
+
+[sub_resource type="Animation" id="Animation_ch40n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BackgroundMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1335, -732)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfj8j"]
+_data = {
+&"RESET": SubResource("Animation_ch40n"),
+&"loop": SubResource("Animation_qyuap")
+}
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="BackgroundMenu" type="TextureRect" parent="."]
+modulate = Color(0.111197, 0.111197, 0.111197, 1)
+offset_left = -1335.0
+offset_top = -732.0
+offset_right = 24665.0
+offset_bottom = 25268.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qyuap")
+stretch_mode = 1
+
+[node name="Animations" type="Node" parent="."]
+script = ExtResource("2_ch40n")
+
+[node name="background" type="AnimationPlayer" parent="Animations"]
+libraries = {
+&"": SubResource("AnimationLibrary_dfj8j")
+}

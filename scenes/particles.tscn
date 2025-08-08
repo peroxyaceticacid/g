@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvl7rt5px5pb0"]
+[gd_scene load_steps=4 format=3 uid="uid://bg6r7qn1rl0yd"]
 
 [ext_resource type="Texture2D" uid="uid://bso8lqactbrot" path="res://sprites/UI/spr_fallingG.png" id="1_xmlf0"]
+[ext_resource type="Script" uid="uid://duxnyrl8bs23j" path="res://script/particleGExplode.gd" id="2_kqrua"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kqrua"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xmlf0"]
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
@@ -23,14 +24,16 @@ scale_min = 0.4
 scale_max = 0.4
 scale_over_velocity_max = 0.5
 
-[node name="Particles" type="Node2D"]
-
-[node name="particle_GExplode" type="GPUParticles2D" parent="."]
-position = Vector2(998, 336)
-amount = 30
+[node name="particle_GExplode" type="GPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 1
 texture = ExtResource("1_xmlf0")
 lifetime = 10.25
+one_shot = true
 speed_scale = 3.59
 explosiveness = 1.0
+draw_order = 0
 trail_lifetime = 10.0
-process_material = SubResource("ParticleProcessMaterial_kqrua")
+process_material = SubResource("ParticleProcessMaterial_xmlf0")
+script = ExtResource("2_kqrua")
