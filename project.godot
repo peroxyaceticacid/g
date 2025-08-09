@@ -18,3 +18,4 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 [autoload]
 
 Global="*res://script/GLOBAL.gd"
+SceneManager="*res://scenes/scene_manager.tscn"

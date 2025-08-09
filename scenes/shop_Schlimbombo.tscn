@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmwpvam0ypj0d"]
+
+[ext_resource type="Texture2D" uid="uid://dyhwqv3niretn" path="res://sprites/backgrounds/spr_ShopBackground.jpg" id="1_358lq"]
+[ext_resource type="Script" uid="uid://7cjolimla2e3" path="res://script/shop.gd" id="1_hd43g"]
+[ext_resource type="Texture2D" uid="uid://dg7kc2wv4smaj" path="res://sprites/characters/chr_schlimbombo/spr_ShopIdle.png" id="2_055lc"]
+[ext_resource type="Texture2D" uid="uid://b4qsu6pv4uwxq" path="res://sprites/UI/spr_ShopFrame.png" id="3_42qb8"]
+[ext_resource type="Texture2D" uid="uid://cknt24c1dwtjo" path="res://sprites/UI/spr_ShopBack.png" id="5_oyr8s"]
+
+[node name="ShopSchlimbombo" type="Node2D"]
+script = ExtResource("1_hd43g")
+main_scene = "uid://bfa7einif8asu"
+
+[node name="Background_Shop" type="TextureRect" parent="."]
+offset_left = -143.0
+offset_top = -63.0
+offset_right = 1275.0
+offset_bottom = 725.0
+texture = ExtResource("1_358lq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="chr_schlimbombo" type="TextureRect" parent="."]
+offset_left = 443.0
+offset_top = 86.0
+offset_right = 1168.0
+offset_bottom = 665.0
+texture = ExtResource("2_055lc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 30.0
+offset_top = 43.0
+offset_right = 508.0
+offset_bottom = 607.0
+texture = ExtResource("3_42qb8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="button_back" type="TextureButton" parent="."]
+offset_left = 926.0
+offset_top = 9.0
+offset_right = 1245.0
+offset_bottom = 147.0
+scale = Vector2(0.69, 0.69)
+texture_normal = ExtResource("5_oyr8s")
+
+[connection signal="button_down" from="button_back" to="." method="_on_exit"]
