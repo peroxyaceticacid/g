@@ -11,21 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dbpobb7p04ajx" path="res://sprites/backgrounds/spr_MountainsForeground.png" id="8_dinhu"]
 [ext_resource type="FontFile" uid="uid://742kbebgyrj4" path="res://resources/gadugi.ttf" id="9_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://di7pejy45cdli" path="res://sprites/UI/sign.png" id="10_kvpfn"]
-[ext_resource type="Script" uid="uid://cxwlmy42l8tb1" path="res://script/obj_shop_buttonMove.gd" id="11_dinhu"]
-
-[sub_resource type="GDScript" id="GDScript_u5sy4"]
-script/source = "extends TextureButton
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[ext_resource type="AudioStream" uid="uid://bdkck54cpt6mt" path="res://resources/ost/fredville.wav" id="13_kvuet"]
+[ext_resource type="AudioStream" uid="uid://g1b066l4yt27" path="res://resources/sfx/g_collect.wav" id="14_trtic"]
 
 [sub_resource type="Animation" id="Animation_gee14"]
 resource_name = "RESET"
@@ -128,17 +115,6 @@ script = ExtResource("1_yqjtg")
 clickParticle = ExtResource("2_gee14")
 shop_scene = "uid://bmwpvam0ypj0d"
 
-[node name="obj_ShopButton" type="TextureButton" parent="."]
-offset_left = 241.0
-offset_top = 723.0
-offset_right = 481.0
-offset_bottom = 984.0
-texture_normal = ExtResource("10_kvpfn")
-texture_hover = ExtResource("4_dinhu")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("11_dinhu")
-
 [node name="obj_GButton" type="TextureButton" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,7 +131,6 @@ pivot_offset = Vector2(91.5, 155)
 texture_normal = ExtResource("1_uwrxv")
 ignore_texture_size = true
 stretch_mode = 5
-script = SubResource("GDScript_u5sy4")
 
 [node name="background" type="Node2D" parent="."]
 position = Vector2(572, 308)
@@ -174,6 +149,18 @@ texture_filter = 1
 position = Vector2(5, 1461)
 scale = Vector2(0.966715, 0.967866)
 texture = ExtResource("6_vtaks")
+
+[node name="obj_ShopButton" type="TextureButton" parent="background/background2"]
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
+offset_left = -341.362
+offset_top = -335.79
+offset_right = -233.362
+offset_bottom = -217.79
+rotation = 0.811578
+texture_normal = ExtResource("10_kvpfn")
+texture_hover = ExtResource("4_dinhu")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="foreground2" type="Sprite2D" parent="background"]
 z_index = -998
@@ -226,5 +213,14 @@ theme_override_font_sizes/normal_font_size = 30
 text = "0 gps"
 vertical_alignment = 1
 
-[connection signal="button_down" from="obj_ShopButton" to="." method="_on_shop_click"]
+[node name="SOUNDS" type="AudioStreamPlayer" parent="."]
+
+[node name="fredville" type="AudioStreamPlayer2D" parent="SOUNDS"]
+stream = ExtResource("13_kvuet")
+autoplay = true
+
+[node name="g_collect" type="AudioStreamPlayer2D" parent="SOUNDS"]
+stream = ExtResource("14_trtic")
+
 [connection signal="pressed" from="obj_GButton" to="." method="_onclick"]
+[connection signal="button_down" from="background/background2/obj_ShopButton" to="." method="_on_shop_click"]

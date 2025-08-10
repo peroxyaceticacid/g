@@ -27,9 +27,9 @@ func transition_to(scene: String) -> void:
 	new_scene.load_scene()
 	await new_scene.loaded
 	
+	
 	transition_out()
 	await transitioned_out
-	
 
 
 func _on_animation_player_animation_finished(anim_name: String) -> void:

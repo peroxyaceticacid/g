@@ -3,6 +3,8 @@ extends Node2D
 @onready var background = $Background_Shop
 @onready var shlimbombo = $chr_schlimbombo
 
+var price = 0.0
+
 signal loaded
 
 @export_file("*.tscn") var main_scene: String

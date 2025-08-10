@@ -7,6 +7,7 @@ extends Node2D
 # OBJECTS 
 @onready var gCounter = $obj_gCounter
 @onready var gpsCounter = $obj_gpsCounter
+@onready var gsound = $SOUNDS/g_collect
 
 # PARTICLES
 @export var clickParticle : PackedScene
@@ -25,27 +26,28 @@ func _onclick():
 		ButtonAnimationCLICKPlayer.stop()
 	ButtonAnimationCLICKPlayer.play("anim_GBClick2")
 	
-	Global._addGs(Global.data["gPerClick"])
+	Global._addGs(Global.data["player"]["gPerClick"])
 	
 	var _particle = clickParticle.instantiate()
-	print(clickParticle)
 	_particle.position = get_global_mouse_position()
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
 	
+	gsound.play()
+	
 	# queue_free()
 
 func _process(delta: float) -> void:
-	gpsCounter.text = Global.abreviateNum(Global.data["gPerSecond"]) + " gps"
+	gpsCounter.text = Global.abreviateNum(Global.data["player"]["gPerSecond"]) + " gps"
 	
-	if Global.displayed_g < Global.data["gAmount"]:
-		var difference = Global.data["gAmount"] - Global.displayed_g
+	if Global.displayed_g < Global.data["player"]["gAmount"]:
+		var difference = Global.data["player"]["gAmount"] - Global.displayed_g
 		
 		var step = max(100, difference * 10) * delta
 		Global.displayed_g += step
 		
-		if Global.displayed_g > Global.data["gAmount"]:
-			Global.displayed_g = Global.data["gAmount"]
+		if Global.displayed_g > Global.data["player"]["gAmount"]:
+			Global.displayed_g = Global.data["player"]["gAmount"]
 			
 		gCounter.text = Global.abreviateNum(Global.displayed_g) + " g's"
 	else:

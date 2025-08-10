@@ -3,51 +3,63 @@ extends Node
 var displayed_g = 0.0
 
 var data = {
-	"gAmount": 0.0,
-	"gPerClick": 1.0,
-	"gPerSecond": 0.0
+	"player": {
+		"gAmount" = 0.0,
+		"gPerClick" = 1.0,
+		"gPerSecond" = 0.0
+	},
+	"upgrades": {
+		"gman": {
+			"count": 0,
+			"gps": 0.1,
+			"cost": 10
+		}
+	}
 }
 
 func _savedatfile(data) -> void:
-	var file := FileAccess.open("user://gdata.dat", FileAccess.WRITE)
+	var file := FileAccess.open("user://gdata.json", FileAccess.WRITE)
 	if file == null:
 		push_error("failed to open file for WRITING")
 		return
 	
-	
-	for i in data:
-		file.store_line("%s=%s" % [i, data[i]])
+	var json_string := JSON.stringify(data)
+	file.store_string(json_string)
 
 func _loaddatfile() -> Dictionary:
-	var result: Dictionary = {}
+	var DEFAULT_data = {
+	"player": {
+		"gAmount" = 0.0,
+		"gPerClick" = 1.0,
+		"gPerSecond" = 0.0
+	},
+	"upgrades": {
+		"gman": {
+			"count": 0,
+			"gps": 0.1,
+			"cost": 10
+		}
+	}
+}
 	
-	if not FileAccess.file_exists("user://gdata.dat"):
-		push_warning("Save file not there vro")
-		return result
+	if not FileAccess.file_exists("user://gdata.json"):
+		push_warning("Save file not there vro. im using base data instead.")
+		return DEFAULT_data
 	
-	var file := FileAccess.open("user://gdata.dat", FileAccess.READ)
+	var file := FileAccess.open("user://gdata.json", FileAccess.READ)
 	if file == null:
-		push_error("failed to open file for READING")
-		return result
+		push_error("failed to open file for READING. using default data")
+		return DEFAULT_data
 	
-	while not file.eof_reached():
-		var line := file.get_line().strip_edges()
-		if line == "" or line.begins_with("#"):
-			continue
-		
-		var parts := line.split("=")
-		if parts.size() == 2:
-			var key := parts[0]
-			var value = parts[1]
-			
-			if value.is_valid_int():
-				value = int(value)
-			elif value.is_valid_float():
-				value = float(value)
-			
-			result[key] = value
+	var content := file.get_as_text()
+	var parsed = JSON.parse_string(content)
 	
-	return result
+	if typeof(parsed) == TYPE_DICTIONARY:
+		return parsed
+	else:
+		push_error("corrupted or not dictionary. using default data")
+		return DEFAULT_data
+	
 
 func commaNum(n: int) -> String:
 	var s = str(n)
@@ -73,10 +85,10 @@ func abreviateNum(n : float) -> String:
 		return str(int(n))
 		
 func _addGs(amount):
-	data["gAmount"] += amount
+	data["player"]["gAmount"] += amount
 
 func _process(delta: float) -> void:
-	_addGs(data["gPerSecond"] * delta)
+	_addGs(data["player"]["gPerSecond"] * delta)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65mdo"]
 shader = ExtResource("1_we8k5")
 shader_parameter/progress = 0.0
-shader_parameter/size = 25.0
+shader_parameter/size = 40.0
 shader_parameter/fill = true
 
 [sub_resource type="Animation" id="Animation_h7lqg"]
