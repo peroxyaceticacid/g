@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmfy1uyemb7tu"]
+[gd_scene load_steps=4 format=3 uid="uid://bmfy1uyemb7tu"]
 
+[ext_resource type="Script" uid="uid://bdf42t283mvgr" path="res://script/shop_dudeCardSetup.gd" id="1_57or2"]
 [ext_resource type="Texture2D" uid="uid://d065hvupygn54" path="res://sprites/UI/spr_DudeCard.png" id="1_cf388"]
 [ext_resource type="FontFile" uid="uid://742kbebgyrj4" path="res://resources/gadugi.ttf" id="3_x04s1"]
 
@@ -7,6 +8,7 @@
 custom_minimum_size = Vector2(125, 140)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_57or2")
 
 [node name="BOXFRAME" type="TextureRect" parent="."]
 layout_mode = 0
@@ -44,3 +46,6 @@ theme_override_fonts/font = ExtResource("3_x04s1")
 text = "gman"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 3

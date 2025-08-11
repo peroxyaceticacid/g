@@ -15,6 +15,7 @@ func transition_out() -> void:
 	
 func transition_to(scene: String) -> void:
 	transition_in()
+	$TextureRect.texture = Global.get_random_texture()
 	await transitioned_in
 	
 	var new_scene = load(scene).instantiate()

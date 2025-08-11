@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmwpvam0ypj0d"]
+[gd_scene load_steps=10 format=3 uid="uid://bmwpvam0ypj0d"]
 
 [ext_resource type="Texture2D" uid="uid://dyhwqv3niretn" path="res://sprites/backgrounds/spr_ShopBackground.jpg" id="1_358lq"]
 [ext_resource type="Script" uid="uid://7cjolimla2e3" path="res://script/shop.gd" id="1_hd43g"]
 [ext_resource type="Texture2D" uid="uid://dg7kc2wv4smaj" path="res://sprites/characters/chr_schlimbombo/spr_ShopIdle.png" id="2_055lc"]
+[ext_resource type="PackedScene" uid="uid://bmfy1uyemb7tu" path="res://scenes/shop_dudeplaceholder.tscn" id="2_7004y"]
 [ext_resource type="Texture2D" uid="uid://b4qsu6pv4uwxq" path="res://sprites/UI/spr_ShopFrame.png" id="3_42qb8"]
 [ext_resource type="Texture2D" uid="uid://cknt24c1dwtjo" path="res://sprites/UI/spr_ShopBack.png" id="5_oyr8s"]
 [ext_resource type="AudioStream" uid="uid://cfund56d7mh7" path="res://resources/ost/placeholder_lofibeat.wav" id="6_ymw2a"]
@@ -11,6 +12,7 @@
 
 [node name="ShopSchlimbombo" type="Node2D"]
 script = ExtResource("1_hd43g")
+dudeCard = ExtResource("2_7004y")
 main_scene = "uid://bfa7einif8asu"
 
 [node name="Background_Shop" type="TextureRect" parent="."]
