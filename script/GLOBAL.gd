@@ -6,7 +6,6 @@ var data = {
 	"player": {
 		"gAmount" = 0.0,
 		"gPerClick" = 1.0,
-		"gPerSecond" = 0.0
 	},
 	"upgrades": {
 		"gman": {
@@ -59,7 +58,6 @@ func _loaddatfile() -> Dictionary:
 	"player": {
 		"gAmount" = 0.0,
 		"gPerClick" = 1.0,
-		"gPerSecond" = 0.0
 	},
 	"upgrades": {
 		"gman": {

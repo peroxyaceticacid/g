@@ -38,7 +38,7 @@ func _onclick():
 	# queue_free()
 
 func _process(delta: float) -> void:
-	gpsCounter.text = Global.abreviateNum(Global.data["player"]["gPerSecond"]) + " gps"
+	gpsCounter.text = Global.abreviateNum(Global.total_gps()) + " gps"
 	
 	if Global.displayed_g < Global.data["player"]["gAmount"]:
 		var difference = Global.data["player"]["gAmount"] - Global.displayed_g
