@@ -68,21 +68,21 @@ stream = ExtResource("6_ymw2a")
 autoplay = true
 
 [node name="obj_buybutton" type="TextureButton" parent="."]
-offset_left = 492.0
-offset_top = 42.0
-offset_right = 668.0
-offset_bottom = 163.0
+offset_left = -285.0
+offset_top = 56.0
+offset_right = -109.0
+offset_bottom = 177.0
 texture_normal = ExtResource("10_j7aru")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 501.0
-offset_top = 168.0
-offset_right = 668.0
-offset_bottom = 223.0
+[node name="GDisplay" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 48.0
+offset_right = 666.0
+offset_bottom = 103.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("7_p68ds")
 theme_override_font_sizes/font_size = 40
-text = "PRICE: 0g"
+text = "0 g's"
 
 [connection signal="button_down" from="button_back" to="." method="_on_exit"]

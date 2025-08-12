@@ -136,7 +136,7 @@ func fit_text(label: Label):
 	label.add_theme_font_size_override("font_size", font_size)
 
 func _process(delta: float) -> void:
-	_addGs(data["player"]["gPerSecond"] * delta)
+	_addGs(total_gps() * delta)
 	
 func get_random_texture() -> Texture2D:
 	var folder_path = "res://sprites/characters/upgrades/"

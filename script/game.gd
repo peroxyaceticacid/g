@@ -45,11 +45,10 @@ func _process(delta: float) -> void:
 		
 		var step = max(100, difference * 10) * delta
 		Global.displayed_g += step
-		
-		if Global.displayed_g > Global.data["player"]["gAmount"]:
-			Global.displayed_g = Global.data["player"]["gAmount"]
 			
 		gCounter.text = Global.abreviateNum(Global.displayed_g) + " g's"
+	elif Global.displayed_g > Global.data["player"]["gAmount"]:
+		Global.displayed_g = Global.data["player"]["gAmount"]	
 	else:
 		gCounter.text = Global.abreviateNum(Global.displayed_g) + " g's"
 	pass
