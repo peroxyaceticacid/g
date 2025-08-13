@@ -53,6 +53,7 @@ scale = Vector2(0.6, 0.6)
 text = "BUY"
 
 [node name="amount" type="Label" parent="BOXFRAME"]
+layout_mode = 0
 offset_left = 13.3333
 offset_top = 21.6667
 offset_right = 85.3333
@@ -67,6 +68,7 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="cost" type="Label" parent="BOXFRAME"]
+layout_mode = 0
 offset_left = 10.8333
 offset_top = 80.8333
 offset_right = 54.8333

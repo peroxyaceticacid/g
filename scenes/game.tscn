@@ -222,5 +222,5 @@ autoplay = true
 [node name="g_collect" type="AudioStreamPlayer2D" parent="SOUNDS"]
 stream = ExtResource("14_trtic")
 
-[connection signal="pressed" from="obj_GButton" to="." method="_onclick"]
+[connection signal="button_down" from="obj_GButton" to="." method="_onclick"]
 [connection signal="button_down" from="background/background2/obj_ShopButton" to="." method="_on_shop_click"]

@@ -16,7 +16,7 @@ func setup(name: String, data: Dictionary):
 	else:
 		push_warning("missing %s texture" % name)
 	
-	$"BOXFRAME/1".pressed.connect(Callable(self, "on_buy").bind(1, name))
+	$"BOXFRAME/1".button_down.connect(Callable(self, "on_buy").bind(1, name))
 	
 func refresh(nm):
 	$BOXFRAME/Name.text = name.capitalize()
