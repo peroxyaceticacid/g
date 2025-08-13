@@ -38,14 +38,13 @@ func _onclick():
 	# queue_free()
 
 func _process(delta: float) -> void:
-	gpsCounter.text = Global.abreviateNum(Global.total_gps()) + " gps"
+	gpsCounter.text = str(Global.total_gps()) + " gps"
 	
 	if Global.displayed_g < Global.data["player"]["gAmount"]:
 		var difference = Global.data["player"]["gAmount"] - Global.displayed_g
 		
 		var step = max(100, difference * 10) * delta
 		Global.displayed_g += step
-			
 		gCounter.text = Global.abreviateNum(Global.displayed_g) + " g's"
 	elif Global.displayed_g > Global.data["player"]["gAmount"]:
 		Global.displayed_g = Global.data["player"]["gAmount"]	

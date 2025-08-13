@@ -37,10 +37,10 @@ func total_gps() -> float:
 		
 	return total
 	
-func calculate_cost(dude : String) -> int:
+func calculate_cost(dude : String, amount : int) -> int:
 	var count = data["upgrades"][dude]["count"]
 	var base_cost = upgrade_stats[dude]["base_cost"]
-	return int(floor(base_cost * pow(1.15, count)))
+	return int(floor(base_cost * pow(1.15, (count + (amount- 1)))))
 
 func _savedatfile(data2save) -> void:
 	var file := FileAccess.open("user://gdata.json", FileAccess.WRITE)

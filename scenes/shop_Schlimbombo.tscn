@@ -1,14 +1,52 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmwpvam0ypj0d"]
+[gd_scene load_steps=14 format=3 uid="uid://bmwpvam0ypj0d"]
 
 [ext_resource type="Texture2D" uid="uid://dyhwqv3niretn" path="res://sprites/backgrounds/spr_ShopBackground.jpg" id="1_358lq"]
 [ext_resource type="Script" uid="uid://7cjolimla2e3" path="res://script/shop.gd" id="1_hd43g"]
 [ext_resource type="Texture2D" uid="uid://dg7kc2wv4smaj" path="res://sprites/characters/chr_schlimbombo/spr_ShopIdle.png" id="2_055lc"]
 [ext_resource type="PackedScene" uid="uid://bmfy1uyemb7tu" path="res://scenes/shop_dudeplaceholder.tscn" id="2_7004y"]
 [ext_resource type="Texture2D" uid="uid://b4qsu6pv4uwxq" path="res://sprites/UI/spr_ShopFrame.png" id="3_42qb8"]
+[ext_resource type="Script" uid="uid://dqooyv7ltbt4k" path="res://scenes/SCHLIMBOMBOEMOTE.gd" id="5_j7aru"]
 [ext_resource type="Texture2D" uid="uid://cknt24c1dwtjo" path="res://sprites/UI/spr_ShopBack.png" id="5_oyr8s"]
 [ext_resource type="AudioStream" uid="uid://cfund56d7mh7" path="res://resources/ost/placeholder_lofibeat.wav" id="6_ymw2a"]
 [ext_resource type="FontFile" uid="uid://742kbebgyrj4" path="res://resources/gadugi.ttf" id="7_p68ds"]
 [ext_resource type="Texture2D" uid="uid://ct7vd6p1gi4ps" path="res://sprites/UI/spr_BuyDude.png" id="10_j7aru"]
+
+[sub_resource type="Animation" id="Animation_7004y"]
+resource_name = "schlimbombochange"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chr_schlimbombo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(443, 86), Vector2(443, 60), Vector2(443, 86)]
+}
+
+[sub_resource type="Animation" id="Animation_j7aru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chr_schlimbombo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(443, 86)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p68ds"]
+_data = {
+&"RESET": SubResource("Animation_j7aru"),
+&"schlimbombochange": SubResource("Animation_7004y")
+}
 
 [node name="ShopSchlimbombo" type="Node2D"]
 script = ExtResource("1_hd43g")
@@ -32,6 +70,13 @@ offset_bottom = 665.0
 texture = ExtResource("2_055lc")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("5_j7aru")
+
+[node name="schlimbombo" type="AnimationPlayer" parent="chr_schlimbombo"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_p68ds")
+}
 
 [node name="Shop_Frame" type="TextureRect" parent="."]
 offset_left = 22.0

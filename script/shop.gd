@@ -10,7 +10,7 @@ extends Node2D
 var price = 0.0
 
 signal loaded
-signal number_changed(number : int)
+signal changeUI(name)
 
 @export_file("*.tscn") var main_scene: String
 
@@ -21,15 +21,7 @@ func _physics_process(delta: float) -> void:
 func load_scene() -> void:
 	await get_tree().create_timer(2.0).timeout
 	loaded.emit()
-	
-	
-	
-	# IM GONNA KMS
-	
-	
 
-	
-	
 func _ready() -> void:
 	for dude in Global.data["upgrades"].keys():
 		var dude_data = Global.data["upgrades"][dude]
@@ -43,10 +35,13 @@ func _ready() -> void:
 func _on_exit() -> void:
 	SceneManager.transition_to(main_scene)
 
-func _buy_pressed(nm, amount):
-	if Global.calculate_cost(nm) <= Global.data["player"]["gAmount"]:
-		Global._addGs(-(Global.upgrade_stats[nm]["base_cost"]))
-		Global.data["upgrades"][nm]["count"] += 1
+func _buy_pressed(nm, amount, card):
+	if Global.calculate_cost(nm, amount) <= Global.data["player"]["gAmount"]:
+		Global._addGs(-(Global.calculate_cost(nm, amount)))
+		Global.data["upgrades"][nm]["count"] += amount
+		
+		# $chr_schlimbombo.expression = "spr_ShopTalk"
+		card.setup(nm, Global.data["upgrades"][nm])
 
 func _process(delta: float) -> void:
 	if Global.displayed_g < Global.data["player"]["gAmount"]:
