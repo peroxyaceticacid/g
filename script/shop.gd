@@ -41,7 +41,7 @@ func _buy_pressed(nm, amount, card):
 		Global.data["upgrades"][nm]["count"] += amount
 		
 		# $chr_schlimbombo.expression = "spr_ShopTalk"
-		card.setup(nm, Global.data["upgrades"][nm])
+		card.refresh(nm, Global.data["upgrades"][nm])
 
 func _process(delta: float) -> void:
 	if Global.displayed_g < Global.data["player"]["gAmount"]:
