@@ -13,6 +13,9 @@ var data = {
 		},
 		"tabby": {
 			"count": 0,
+			},
+		"golden": {
+			"count": 0,
 		},
 		"mugdude": {
 			"count": 0,
@@ -29,6 +32,10 @@ var upgrade_stats = {
 		"base_cost": 100,
 		"gps": 1.0
 	},
+	"golden": {
+		"base_cost": 500,
+		"gps": 15.0
+	},	
 	"mugdude": {
 		"base_cost": 5000,
 		"gps": 25.0
@@ -71,6 +78,9 @@ func _loaddatfile() -> Dictionary:
 			"count": 0,
 		},
 		"tabby": {
+			"count": 0,
+		},
+		"golden": {
 			"count": 0,
 		},
 		"mugdude": {
