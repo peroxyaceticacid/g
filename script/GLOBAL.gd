@@ -11,21 +11,28 @@ var data = {
 		"gman": {
 			"count": 0,
 		},
+		"tabby": {
+			"count": 0,
+		},
 		"mugdude": {
 			"count": 0,
-		}
+		},
 	}
 }
 
 var upgrade_stats = {
 	"gman": {
-			"base_cost": 100,
-			"gps": 0.1
-		},
+		"base_cost": 10,
+		"gps": 0.1
+	},
+	"tabby": {
+		"base_cost": 100,
+		"gps": 1.0
+	},
 	"mugdude": {
-			"base_cost": 5000,
-			"gps": 25.0
-		}
+		"base_cost": 5000,
+		"gps": 25.0
+	},
 }
 
 func total_gps() -> float:
@@ -63,9 +70,12 @@ func _loaddatfile() -> Dictionary:
 		"gman": {
 			"count": 0,
 		},
+		"tabby": {
+			"count": 0,
+		},
 		"mugdude": {
 			"count": 0,
-		}
+		},
 	}
 }
 	
