@@ -93,6 +93,8 @@ offset_left = 55.0
 offset_top = 32.0
 offset_right = 424.44
 offset_bottom = 507.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="Shop_Frame/ScrollContainer"]
 layout_mode = 2

@@ -13,11 +13,23 @@ var data = {
 		},
 		"tabby": {
 			"count": 0,
-			},
+		},
 		"golden": {
 			"count": 0,
 		},
+		"gabe": {
+			"count": 0,
+		},
+		"glibble": {
+			"count": 0,
+		},
+		"babru": {
+			"count": 0,
+		},
 		"mugdude": {
+			"count": 0,
+		},
+		"evil mug": {
 			"count": 0,
 		},
 	}
@@ -35,10 +47,26 @@ var upgrade_stats = {
 	"golden": {
 		"base_cost": 500,
 		"gps": 15.0
-	},	
+	},
+	"gabe": {
+		"base_cost": 1000,
+		"gps": 40.0
+	},
+	"glibble": {
+		"base_cost": 1313,
+		"gps": 131.0
+	},
+	"babru": {
+		"base_cost": 2350,
+		"gps": 200.0
+	},
 	"mugdude": {
 		"base_cost": 5000,
-		"gps": 25.0
+		"gps": 300.0
+	},
+	"evil mug": {
+		"base_cost": 66666,
+		"gps": 6666.0
 	},
 }
 
@@ -83,7 +111,19 @@ func _loaddatfile() -> Dictionary:
 		"golden": {
 			"count": 0,
 		},
+		"gabe": {
+			"count": 0,
+		},
+		"glibble": {
+			"count": 0,
+		},
+		"babru": {
+			"count": 0,
+		},
 		"mugdude": {
+			"count": 0,
+		},
+		"evil mug": {
 			"count": 0,
 		},
 	}

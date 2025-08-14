@@ -18,4 +18,4 @@ func update_expression_sprite():
 var expression: String = "neutral" :
 	set(value):
 		expression = value
-		
+		update_expression_sprite()
