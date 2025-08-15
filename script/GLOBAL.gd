@@ -45,24 +45,24 @@ var upgrade_stats = {
 		"gps": 1.0
 	},
 	"golden": {
-		"base_cost": 500,
-		"gps": 15.0
+		"base_cost": 1000,
+		"gps": 7.0
 	},
 	"gabe": {
-		"base_cost": 1000,
-		"gps": 40.0
+		"base_cost": 2600,
+		"gps": 15.0
 	},
 	"glibble": {
-		"base_cost": 1313,
-		"gps": 131.0
+		"base_cost": 3500,
+		"gps": 50.0
 	},
 	"babru": {
-		"base_cost": 2350,
-		"gps": 200.0
+		"base_cost": 8230,
+		"gps": 80.0
 	},
 	"mugdude": {
-		"base_cost": 5000,
-		"gps": 300.0
+		"base_cost": 15000,
+		"gps": 111.0
 	},
 	"evil mug": {
 		"base_cost": 66666,
